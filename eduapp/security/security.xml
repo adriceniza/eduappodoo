@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+ <data>
+ <!-- GRUPO GESTOR DE INCIDENCIAS -->
+ <record id="grupo_gestor" model="res.groups">
+ <field name="name">Eduapp/Gestor eduapp</field>
+ <field name="comment">Perfil gestor de acceso a eduapp</field>
+ </record>
+ <!-- GRUPO OPERARIO DE INCIDENCIAS -->
+ <record id="grupo_operario" model="res.groups">
+ <field name="name">Eduapp/Operario eduapp</field>
+ <field name="comment">Perfil operario de acceso a eduapp</field>
+ </record>
+ </data>
+ </odoo>

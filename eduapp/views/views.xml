@@ -1,0 +1,163 @@
+<odoo>
+  <data>
+
+  <!-- VIEWS AND FORMS  -->
+
+
+  <!--      RESOURCES -->
+    <record model="ir.ui.view" id="eduapp.resources_tree">
+      <field name="name">Eduapp resources</field>
+      <field name="model">eduapp.resources</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="description"/>
+          <field name='files'/>
+        </tree>
+      </field>
+    </record>
+
+
+    <record model="ir.ui.view" id="eduapp.resources_form">
+      <field name="name">eduapp.resources_form</field>
+      <field name="model">eduapp.resources</field>
+      <field name="arch" type="xml">
+        <form>
+          <group colspan="2" col="2">
+            <field name="name"/>
+            <field name="description"/>
+            <field name='files'>
+              <tree>
+                <field name="eduappFile"/>
+              </tree>
+            </field>
+          </group>
+          <div class='oe_chatter'>
+            <field name='message_follower_ids' widget='mail_followers' groups='base.group_user'/>
+            <field name='activity_ids' widget='mail_activity'/>
+            <field name='message_ids' widget='mail_thread'/>
+          </div>
+        </form>
+      </field>
+    </record>
+    
+
+    <!--         FILES -->
+
+    <record model="ir.ui.view" id="eduapp.files_tree">
+      <field name="name">eduapp.files_tree</field>
+      <field name="model">eduapp.files</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name='eduappFile'/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="eduapp.files_form">
+      <field name="name">eduapp.files_form</field>
+      <field name="model">eduapp.files</field>
+      <field name="arch" type="xml">
+        <form>
+            <field widget='image' name='eduappFile'/>
+        </form>
+      </field>
+    </record>
+
+
+
+
+    <!--        SESSIONS -->
+
+    <record model="ir.ui.view" id="eduapp.sessions_tree">
+      <field name="name">eduapp.sessions_tree</field>
+      <field name="model">eduapp.sessions</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name='date'/>
+          <field name='resourcesPlatform'/>
+          <field name='streamingPlatform'/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="eduapp.sessions_form">
+      <field name="name">eduapp.sessions_form</field>
+      <field name="model">eduapp.sessions</field>
+      <field name="arch" type="xml">
+        <form>
+          <group colspan="2" col="2">
+            <field name="name"/>
+            <field widget='date' name="date"/>
+            <field name="resourcesPlatform"/>
+            <field name="streamingPlatform"/>
+            <field name="user"/>
+
+          </group>
+        </form>
+      </field>
+    </record>
+
+
+    <record id="res_partner_view_form_inherit_sessions" model="ir.ui.view">
+      <field name="name">res.partner.view.form.inherit.eduapp</field>
+      <field name="model">res.partner</field>
+      <field name="inherit_id" ref="base.view_partner_form"/>
+      <field name="arch" type="xml">
+        <xpath expr="//page[@name='internal_notes']" position="after">
+          <page string="Eduapp" name="Ficha_eduapp_users">
+            <field name="sessions">
+              <tree>
+                <field name="name"/>
+                <field name='date'/>
+                <field name='resourcesPlatform'/>
+                <field name='streamingPlatform'/>
+              </tree>
+            </field>
+          </page>
+        </xpath>
+      </field>
+    </record>
+
+
+    <!-- ACTIONS -->
+    <record model="ir.actions.act_window" id="eduapp.resources_action_window">
+      <field name="name">eduapp resources</field>
+      <field name="res_model">eduapp.resources</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="eduapp.files_action_window">
+      <field name="name">Eduapp files</field>
+      <field name="res_model">eduapp.files</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="eduapp.sessions_action_window">
+      <field name="name">Eduapp sessions</field>
+      <field name="res_model">eduapp.sessions</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- MENÚ PRINCIPAL APLICACIÓN EDUAPP -->
+    <menuitem name="Eduapp" id="eduapp.menu_root"/>
+
+    <!-- SUBMENÚ RESOURCES -->
+    <menuitem name="Resources" id="eduapp.resources_menu"
+              parent="eduapp.menu_root"/>
+
+    <!-- SUBMENÚ SESSIONS -->
+    <menuitem name="Sessions" id="eduapp.sessions_menu"
+              parent="eduapp.menu_root" action="eduapp.sessions_action_window"/>
+
+    <!-- OPCIONES DEL MENÚ SESSIONS -->
+    <!-- <menuitem name="Sessions" id="eduapp.sessions_menu_sessions"
+              parent="eduapp.sessions_menu" action="eduapp.sessions_action_window"/> -->
+    <!-- OPCIONES DEL MENÚ RESOURCES-->
+    <menuitem name="Resources" id="eduapp.resources_menu_resources"
+              parent="eduapp.resources_menu" action="eduapp.resources_action_window"/>
+    <menuitem name="Files" id="eduapp.files_menu_files"
+              parent="eduapp.resources_menu" action="eduapp.files_action_window"/>
+  </data>
+</odoo>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <data>
+        <record model="ir.actions.report" id="eduapp.sessions_municipios_report">
+            <field name="name">Informe Sesiones</field>
+            <field name="model">eduapp.sessions</field>
+            <field name="report_type">qweb-html</field>
+            <field name="report_name">eduapp.sessions_report_template</field>
+            <field name="report_file">eduapp.sessions_report_template</field>
+            <field name="binding_model_id" ref="eduapp.model_eduapp_sessions"/>
+            <field name="binding_type">report</field>
+        </record>
+    </data>
+</odoo>

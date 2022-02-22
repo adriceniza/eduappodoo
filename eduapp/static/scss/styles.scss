@@ -1,0 +1,16 @@
+.o_main_navbar{
+    background-color: rgb(0, 140, 255) !important;
+}.btn-fill-primary, .btn-primary{
+    background-color: rgb(0, 140, 255) !important;
+}
+.o_main_navbar > ul > li > a:hover{
+    background-color: rgb(4, 108, 192) !important;    
+}
+
+.o_view_nocontent .o_nocontent_help .o_view_nocontent_smiling_face:before{
+    background: transparent url("http://eduapp-project.eu/wp-content/uploads/2021/03/Logo-EduApp-1-150x150.png") no-repeat center !important;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    overflow: hidden;
+}
